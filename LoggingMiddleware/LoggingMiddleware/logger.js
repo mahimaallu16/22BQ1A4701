@@ -20,7 +20,11 @@ async function log(stack, level, packageName, message) {
     console.log('Log sent:', response.data);
     return response.data;
   } catch (error) {
-    console.error('Error sending log:', error.response ? error.response.data : error.message);
+    if (error.response) {
+      console.error('Error sending log:', error.response.data);
+    } else {
+      console.error('Error sending log:', error.message);
+    }
   }
 }
 
